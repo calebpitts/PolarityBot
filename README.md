@@ -4,12 +4,9 @@ Calculates a "polarity score" and other notable stats on specific Youtube videos
 ## Installation of Libraries
 You need python3 and pip installed to get these libraries.
 Run:
-
-    pip install nltk
-    
-    pip install csv
-    
-    pip install json
+```pip install nltk```
+```pip install csv```
+```pip install json```
     
 You'll also need vader_lexicon.
 Install vader_lexicon once you go into a python console:
@@ -22,7 +19,7 @@ Install vader_lexicon once you go into a python console:
 1. Select Youtube Data API
 1. Click Enable and follow the prompted steps to get your credentials
 
-## Select Youtube Video ID
+## Select YouTube Video ID
 To analyze a video, go on Youtube and get the video id found at the end of the url.
 For example:
 https://www.youtube.com/watch?v=YI3HD0HAz74
