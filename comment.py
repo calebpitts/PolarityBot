@@ -1,19 +1,17 @@
-################################
-#  CommentAPI Project 6/30/18  #
-################################
-# Class that gathers comments from a given YouTube video id attribute.
-# Returns a list of comments stripped of HTML tags and entities
-
+'''
+Class that gathers comments from a given YouTube video id attribute.
+Returns a list of comments stripped of HTML tags and entities.
+'''
 import json
 from urllib.error import HTTPError
 from urllib.request import urlopen
 from html.parser import HTMLParser
 
-YOUTUBE_DATA_API_KEY = "AIzaSyAIyVr67OekIlgLvFVS_5N8sVFV5GVk3a4"
 BASE_REQUEST_URL = "https://www.googleapis.com/youtube/v3/commentThreads?"
 PART = "part=snippet&videoId="
 
 
+# Strips text of HTML tags
 class MLStripper(HTMLParser):
     def __init__(self):
         self.reset()
@@ -29,24 +27,26 @@ class MLStripper(HTMLParser):
 
 
 class Comment():
-    def __init__(self, video_id):
+    def __init__(self, video_id, user_api_key):
         self.video_id = video_id
+        self.user_api_key = user_api_key
         self.comment_list = []
         self.stripped_comments = []
 
     # Builds an initial url with a video id that collects the first page of comments
     def build_initial_url(self, search_query):
-        return BASE_REQUEST_URL + PART + search_query + "&key=" + YOUTUBE_DATA_API_KEY
+        return BASE_REQUEST_URL + PART + search_query + "&key=" + self.user_api_key
 
     # Builds a url with a video id's page token linking to the next page of comments
     def build_next_url(self, search_query, pageToken):
-        return BASE_REQUEST_URL + "pageToken=" + pageToken + "&" + PART + search_query + "&key=" + YOUTUBE_DATA_API_KEY
+        return BASE_REQUEST_URL + "pageToken=" + pageToken + "&" + PART + search_query + "&key=" + self.user_api_key
 
     # Gets JSON response
     def get_result(self, url):
         response = None
         response = urlopen(url)
         json_txt = response.read().decode(encoding="utf-8")
+        response.close()
         return json.loads(json_txt)
 
     # Accesses 'textDisplay' component of JSON output where the comment is stored
@@ -72,15 +72,18 @@ class Comment():
     def build_comment_list(self):
         pageToken = None
         try:
+            # json_result is the response we get back from opening our custom url.
             json_result = self.get_result(self.build_initial_url(self.video_id))
+            # 'get_comments' accesses all the comments on the current page.
             self.comment_list = self.comment_list + self.get_comments(json_result)
             try:
                 pageToken = json_result['nextPageToken']
             except KeyError:
                 print("MSG: No more results. Only one page of results.")
         except HTTPError:
-            print("\nERROR: Failed to open url\n")
+            print("\nERROR: Failed to open url. Might be due to an invalid API key or video ID.\n")
         # Collects comments on the next pageToken until there is no pageToken present
+        # pageToken exists when there is another page of comments.
         while pageToken != None:
             if len(self.comment_list) > 5000:
                 print("Max comment count reached. Analyzing first 5000 comments...")
