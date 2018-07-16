@@ -3,6 +3,7 @@ Calculates a "polarity score" and other notable stats on specific Youtube videos
 
 ## Installation of Libraries
 You need python3 and pip installed to get these libraries.
+
 Run:
 
 ```pip install nltk```
@@ -11,8 +12,8 @@ Run:
 
 ```pip install json```
     
-You'll also need vader_lexicon.
-Install vader_lexicon once you go into a python console:
+You'll also need to install ```vader_lexicon```.
+Go into a python console and run:
     
     import nltk
     nltk.download('vader_lexicon')
