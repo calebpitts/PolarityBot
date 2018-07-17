@@ -33,4 +33,9 @@ yields a video id of ```YI3HD0HAz74```. It's always found at the end of the url 
 The script will save a CSV to the local directory so go to the directory you want to store the CSV file before running the script.
 Run ```python3 main.py```
 
+## Interpreting the Results
+The script will output the mean polarity score of all the comments and the min, and max polarity score in that set of comments. It also gives a distribution of the number of comments within each polarity score interval. 
 
+A CSV file with all the scores and comments will be saved in a CSV file named ```polarity_[VIDEO ID].csv```. You can manipulate those statistics however you like. 
+
+Enjoy! Let me know if you find any bugs, want to contribute or just talk.
