@@ -14,7 +14,8 @@ Go into a python console and run:
     
     import nltk
     nltk.download()
-A downloader will pop up, click on the packages tab and scroll down to 'vader_lexicon'. Double click that and once it says that it is installed, exit that downloader and the python console. 
+A downloader will pop up. If an SSL Certificate error pops up, navigate to /Applications/Python 3.7 then run Install Certificates.command. 
+Click on the packages tab and scroll down to 'vader_lexicon'. Double click that and once it says that it is installed, exit that downloader and the python console. 
 Install twython, matplotlib, and pandas if you haven't already done so:
 
 ```pip install twython```
@@ -46,4 +47,4 @@ The script will output the mean polarity score of all the comments and the min, 
 
 A CSV file with all the scores and comments will be saved in a CSV file named ```polarity_[VIDEO ID].csv```. You can manipulate those statistics however you like. 
 
-Enjoy! Let me know if you find any bugs, want to contribute or just talk.
+Enjoy! Let me know if you find any bugs or had trouble running the script.
