@@ -3,7 +3,6 @@ Calculates a "polarity score" and other notable stats on specific Youtube videos
 
 ## Installation of Libraries
 You need python3 and pip installed to get these libraries.
-
 Make sure the csv and json modules are installed or included within python's standard library.
 
 Run:
@@ -14,7 +13,15 @@ You'll also need to install ```vader_lexicon```.
 Go into a python console and run:
     
     import nltk
-    nltk.download('vader_lexicon')
+    nltk.download()
+A downloader will pop up, click on the packages tab and scroll down to 'vader_lexicon'. Double click that and once it says that it is installed, exit that downloader and the python console. 
+Install twython, matplotlib, and pandas if you haven't already done so:
+```pip install twython```
+
+```pip install matplotlib```
+
+```pip install pandas```
+
 ## Setting up Youtube API Credentials
 1. Go to https://console.developers.google.com/project and sign in to your google account.
 1. Click on Project -> Create Project
