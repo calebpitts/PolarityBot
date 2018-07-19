@@ -16,6 +16,7 @@ Go into a python console and run:
     nltk.download()
 A downloader will pop up, click on the packages tab and scroll down to 'vader_lexicon'. Double click that and once it says that it is installed, exit that downloader and the python console. 
 Install twython, matplotlib, and pandas if you haven't already done so:
+
 ```pip install twython```
 
 ```pip install matplotlib```
@@ -35,8 +36,10 @@ https://www.youtube.com/watch?v=YI3HD0HAz74
 yields a video id of ```YI3HD0HAz74```. It's always found at the end of the url after ```v=```
 
 ## Running the Script
-The script will save a CSV to the local directory so go to the directory you want to store the CSV file before running the script.
-Run ```python3 main.py```
+The script will save a CSV file in the local directory once ran.
+Navigate to the folder where you stored the script and run:
+
+```python3 main.py```
 
 ## Interpreting the Results
 The script will output the mean polarity score of all the comments and the min, and max polarity score in that set of comments. It also gives a distribution of the number of comments within each polarity score interval. 
