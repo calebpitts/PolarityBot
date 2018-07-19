@@ -4,13 +4,11 @@ Calculates a "polarity score" and other notable stats on specific Youtube videos
 ## Installation of Libraries
 You need python3 and pip installed to get these libraries.
 
+Make sure the csv and json modules are installed or included within python's standard library.
+
 Run:
 
 ```pip install nltk```
-
-```pip install csv```
-
-```pip install json```
     
 You'll also need to install ```vader_lexicon```.
 Go into a python console and run:
